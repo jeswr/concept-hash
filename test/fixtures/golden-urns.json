@@ -1,0 +1,22 @@
+{
+  "prime:KIND": "urn:concept:bciqmstr6rgoqcfeguzem4r2ntuobtve3vegla4syeak2xqdudkgqy3a",
+  "prime:SOMETHING~THING": "urn:concept:bciqaxyvwtvahomqigy62qrommc4f7nmgrn3d5bdhfdk5y46sapamu6i",
+  "prime:DON'T-WANT": "urn:concept:bciqggzox5zz2qufoh4w7qttirm2e7lzkwtz45vdxenrexczqrlnv6my",
+  "prime:I": "urn:concept:bciqe47sf7dxfh7n5c7r5f3esdmb7k7mfswdyzsztcmcp7xbb7ektqqq",
+  "prime:LIKE~AS~WAY": "urn:concept:bciqhij2cq63jbwdeqbmven35h7q2x2paruiyz3xor3rp52tgpfcmhii",
+  "concrete-individual": "urn:concept:bciqmiwb4pbd74uxmrrwmypjgyhmrnhiujgur7qtzg6s4ihkqdupf7yi",
+  "endurant": "urn:concept:bciqcgog5fmyl5adxak3bhigcqod4eq62clfyulz4bqqb4rhxid7p7yy",
+  "gufo-event": "urn:concept:bciqavppsrxbwfekaibgq432mybegveqxcsdcs5whlfsh463p365ms5i",
+  "bookmark": "urn:concept:bciqhide6w7ctgjpcanw5gnjyltal2u4su2uoqo42opqjlnc7xvr7rly",
+  "archived": "urn:concept:bciqmjr6hmvy57jy3phadhiroimbbjabiaxrtg64g6662ferttadi6qi",
+  "title": "urn:concept:bciqmzacx7b7rwadzmzsvknxxzoxtneje7tl67mfske2ujec56iz22rq",
+  "notes": "urn:concept:bciqmzacx7b7rwadzmzsvknxxzoxtneje7tl67mfske2ujec56iz22rq",
+  "locator": "urn:concept:bciqoyth355eax42gehqp33lwwbd2c4fxezcdrmfcxrpfooenjckjtxi",
+  "xsd-boolean": "urn:concept:bciqhjvhsu7f46suys244fizuk3jznhpkhkvkog3qzezv3adtksuta2a",
+  "xsd-string": "urn:concept:bciqalh2fgwsynqauu7gl5rgw5e5muztr6zrdxy7i54vnechg7qxv6uq",
+  "titled-bookmark": "urn:concept:bciqcuqf7bdqt6rjhobtgesylrcszc5wfc3i5gxsdl56uuqs3yz2ahzy",
+  "molecule-web": "urn:concept:bciqmmkqr4uv4kuvdly55amiwwgzvbemcal3ywtvq74ia5fsnz6jbo2q",
+  "cycle-alpha": "urn:concept:bciqgubfy6svzd337do7rj5o7fojjkq5652kaqa7uyfpsaan34fyxkjy",
+  "cycle-beta": "urn:concept:bciqbl3ly2cqzfqqq746bbyqdjrj4gwf2uqzyytxqge2qbgh6llko33a",
+  "component:cycle": "urn:concept:bciqdgejeh5efbg5adboimyh3zvkh7chiinmsdgeung5amzxqkcjfm2y"
+}

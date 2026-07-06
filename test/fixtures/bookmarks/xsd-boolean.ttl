@@ -1,0 +1,7 @@
+# AUTHORED-BY Claude Fable 5
+# XSD bridge concept (§7): the one sanctioned external-IRI-in-hash case.
+@prefix cdef: <urn:concept-def:1#> .
+
+<urn:x-mint:xsd-boolean> a cdef:ConceptDefinition ;
+    cdef:semanticStatus cdef:AxiomsOnly ;
+    cdef:axiom [ cdef:rel cdef:bridgesTo ; cdef:target <http://www.w3.org/2001/XMLSchema#boolean> ] .

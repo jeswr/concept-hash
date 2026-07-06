@@ -1,0 +1,56 @@
+# AUTHORED-BY Claude Fable 5
+# Golden vector 11 (§5 extraction rule): this file is bookmarks/bookmark.ttl
+# PLUS annotation triples beside the definition (labels, a see-also, and an
+# annotation subject of its own). Extraction ignores them at MINT, so this
+# record mints the IDENTICAL URN to `bookmark` — and a served representation
+# containing them is REJECTED at verify.
+@prefix cdef: <urn:concept-def:1#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix p:    <urn:x-mint:prime:> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:x-mint:annotations-beside> a cdef:ConceptDefinition ;
+    rdfs:label "Bookmark"@en ;
+    rdfs:comment "A saved pointer to something someone wants to find again." ;
+    rdfs:seeAlso <https://example.org/docs/bookmark> ;
+    cdef:semanticStatus cdef:Explicated ;
+    cdef:explication [
+        cdef:frame cdef:InstanceSchema ;
+        cdef:referents (
+          [ cdef:refIndex "1"^^xsd:nonNegativeInteger ; cdef:refKind cdef:SomethingRef ]
+          [ cdef:refIndex "2"^^xsd:nonNegativeInteger ; cdef:refKind cdef:SomeoneRef ]
+          [ cdef:refIndex "3"^^xsd:nonNegativeInteger ; cdef:refKind cdef:SomethingRef ] ) ;
+        cdef:clauses (
+          [ cdef:op p:BECAUSE ;
+            cdef:effect [ cdef:pred p:THERE-IS ;
+              cdef:slot [ cdef:role cdef:undergoer ;
+                          cdef:filler [ cdef:ref "1"^^xsd:nonNegativeInteger ] ] ] ;
+            cdef:cause  [ cdef:pred p:DO ;
+              cdef:slot [ cdef:role cdef:agent ;
+                          cdef:filler [ cdef:head p:SOMEONE ;
+                                        cdef:bind "2"^^xsd:nonNegativeInteger ] ] ;
+              cdef:slot [ cdef:role cdef:undergoer ;
+                          cdef:filler [ cdef:head <urn:x-mint:prime:SOMETHING~THING> ] ] ] ]
+          [ cdef:pred p:THERE-IS ;
+            cdef:slot [ cdef:role cdef:undergoer ;
+                        cdef:filler [ cdef:det <urn:x-mint:prime:OTHER~ELSE~ANOTHER> ;
+                                      cdef:head <urn:x-mint:prime:SOMETHING~THING> ;
+                                      cdef:bind "3"^^xsd:nonNegativeInteger ] ] ]
+          [ cdef:op p:BECAUSE ;
+            cdef:cause  [ cdef:pred p:THERE-IS ;
+              cdef:slot [ cdef:role cdef:undergoer ;
+                          cdef:filler [ cdef:ref "1"^^xsd:nonNegativeInteger ] ] ] ;
+            cdef:effect [ cdef:op p:CAN ; cdef:scope
+              [ cdef:pred p:KNOW ;
+                cdef:slot [ cdef:role cdef:experiencer ;
+                            cdef:filler [ cdef:ref "2"^^xsd:nonNegativeInteger ] ] ;
+                cdef:slot [ cdef:role cdef:complement ; cdef:filler
+                  [ cdef:pred p:BE-SOMEWHERE ;
+                    cdef:slot [ cdef:role cdef:undergoer ;
+                                cdef:filler [ cdef:ref "3"^^xsd:nonNegativeInteger ] ] ;
+                    cdef:slot [ cdef:role cdef:locus ;
+                                cdef:filler [ cdef:head <urn:x-mint:prime:WHERE~PLACE> ] ] ] ] ] ] ]
+        ) ] .
+
+<https://example.org/annotations/1> rdfs:label "an unrelated annotation subject" ;
+    rdfs:seeAlso <urn:x-mint:annotations-beside> .

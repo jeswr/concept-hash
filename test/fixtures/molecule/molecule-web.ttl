@@ -1,0 +1,10 @@
+# AUTHORED-BY Claude Fable 5
+# Molecule-flagged golden vector (§3.5): the grounding note here uses only
+# prime exponents / closed allolexes — the linked-ref form is exercised by the
+# two-stage programmatic vector in golden-vectors.test.ts.
+@prefix cdef: <urn:concept-def:1#> .
+
+<urn:x-mint:molecule-web> a cdef:ConceptDefinition ;
+    cdef:semanticStatus cdef:Molecule ;
+    cdef:axiom [ cdef:rel cdef:subClassOf ; cdef:target <urn:x-mint:concrete-individual> ] ;
+    cdef:groundingNote "something of one kind; there are many things of this kind in many places; people can see these things" .

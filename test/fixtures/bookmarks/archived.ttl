@@ -1,0 +1,75 @@
+# AUTHORED-BY Claude Fable 5
+# bookmark:archived — existence proof 2, transcribed VERBATIM from §3.4 of the
+# design doc (c: refs → this mint set's symbolic names; p: → the prime set).
+@prefix cdef: <urn:concept-def:1#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix p:    <urn:x-mint:prime:> .
+
+<urn:x-mint:archived> a cdef:ConceptDefinition ;
+    cdef:semanticStatus cdef:Explicated ;
+    cdef:axiom [ cdef:rel cdef:propertyKind ; cdef:target cdef:DatatypeProperty ] ;
+    cdef:axiom [ cdef:rel cdef:domain ; cdef:target <urn:x-mint:bookmark> ] ;
+    cdef:axiom [ cdef:rel cdef:range  ; cdef:target <urn:x-mint:xsd-boolean> ] ;
+    cdef:explication [
+        cdef:frame cdef:WhenTrue ;                # referent 1 := an instance of the domain class
+        cdef:referents (
+          [ cdef:refIndex "1"^^xsd:nonNegativeInteger ; cdef:refKind cdef:SomethingRef ]
+          [ cdef:refIndex "2"^^xsd:nonNegativeInteger ; cdef:refKind cdef:SomeoneRef ] ) ;
+        cdef:clauses (
+          # clause 1 — "there is this something because someone did something"
+          [ cdef:op p:BECAUSE ;
+            cdef:effect [ cdef:pred p:THERE-IS ;
+              cdef:slot [ cdef:role cdef:undergoer ;
+                          cdef:filler [ cdef:ref "1"^^xsd:nonNegativeInteger ] ] ] ;
+            cdef:cause  [ cdef:pred p:DO ;
+              cdef:slot [ cdef:role cdef:agent ;
+                          cdef:filler [ cdef:head p:SOMEONE ;
+                                        cdef:bind "2"^^xsd:nonNegativeInteger ] ] ;
+              cdef:slot [ cdef:role cdef:undergoer ;
+                          cdef:filler [ cdef:head <urn:x-mint:prime:SOMETHING~THING> ] ] ] ]
+          # clause 2 — "this someone thinks like this: …" (quote re-anchors I/NOW, §4.6)
+          [ cdef:pred p:THINK ;
+            cdef:slot [ cdef:role cdef:experiencer ;
+                        cdef:filler [ cdef:ref "2"^^xsd:nonNegativeInteger ] ] ;
+            cdef:slot [ cdef:role cdef:quote ; cdef:filler [ cdef:quoteClauses (
+                # "I saw this something before now"
+                [ cdef:pred p:SEE ;
+                  cdef:slot [ cdef:role cdef:experiencer ; cdef:filler [ cdef:head p:I ] ] ;
+                  cdef:slot [ cdef:role cdef:stimulus ;
+                              cdef:filler [ cdef:ref "1"^^xsd:nonNegativeInteger ] ] ;
+                  cdef:adjunct [ cdef:role cdef:time ;
+                                 cdef:filler [ cdef:op p:BEFORE ; cdef:anchor p:NOW ] ] ]
+                # "I don't want to see it now"
+                [ cdef:pred <urn:x-mint:prime:DON'T-WANT> ;
+                  cdef:slot [ cdef:role cdef:experiencer ; cdef:filler [ cdef:head p:I ] ] ;
+                  cdef:slot [ cdef:role cdef:complement ; cdef:filler
+                    [ cdef:pred p:SEE ;
+                      cdef:slot [ cdef:role cdef:experiencer ; cdef:filler [ cdef:head p:I ] ] ;
+                      cdef:slot [ cdef:role cdef:stimulus ;
+                                  cdef:filler [ cdef:ref "1"^^xsd:nonNegativeInteger ] ] ;
+                      cdef:adjunct [ cdef:role cdef:time ; cdef:filler p:NOW ] ] ] ]
+                # "if I want to see it at some time after now, I can see it at this time"
+                [ cdef:op p:IF ;
+                  cdef:antecedent [ cdef:pred p:WANT ;
+                    cdef:slot [ cdef:role cdef:experiencer ; cdef:filler [ cdef:head p:I ] ] ;
+                    cdef:slot [ cdef:role cdef:complement ; cdef:filler
+                      [ cdef:pred p:SEE ;
+                        cdef:slot [ cdef:role cdef:experiencer ; cdef:filler [ cdef:head p:I ] ] ;
+                        cdef:slot [ cdef:role cdef:stimulus ;
+                                    cdef:filler [ cdef:ref "1"^^xsd:nonNegativeInteger ] ] ;
+                        cdef:adjunct [ cdef:role cdef:time ;
+                          cdef:filler [ cdef:det p:SOME ;
+                                        cdef:head <urn:x-mint:prime:WHEN~TIME> ;
+                                        cdef:bind "3"^^xsd:nonNegativeInteger ;
+                                        cdef:restrictedBy
+                                          [ cdef:op p:AFTER ; cdef:anchor p:NOW ] ] ] ] ] ] ;
+                  cdef:consequent [ cdef:op p:CAN ; cdef:scope
+                    [ cdef:pred p:SEE ;
+                      cdef:slot [ cdef:role cdef:experiencer ; cdef:filler [ cdef:head p:I ] ] ;
+                      cdef:slot [ cdef:role cdef:stimulus ;
+                                  cdef:filler [ cdef:ref "1"^^xsd:nonNegativeInteger ] ] ;
+                      cdef:adjunct [ cdef:role cdef:time ;
+                                     cdef:filler [ cdef:ref "3"^^xsd:nonNegativeInteger ] ] ] ] ]
+            ) ] ] ]
+        ) ] .
+    # (referent 3 is quote-local, declared implicitly by its cdef:bind; §4.2)

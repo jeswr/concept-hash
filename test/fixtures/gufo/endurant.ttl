@@ -1,0 +1,6 @@
+# AUTHORED-BY Claude Fable 5
+@prefix cdef: <urn:concept-def:1#> .
+
+<urn:x-mint:endurant> a cdef:ConceptDefinition ;
+    cdef:semanticStatus cdef:AxiomsOnly ;
+    cdef:axiom [ cdef:rel cdef:subClassOf ; cdef:target <urn:x-mint:concrete-individual> ] .

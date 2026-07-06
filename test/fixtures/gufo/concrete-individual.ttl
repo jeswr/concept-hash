@@ -1,0 +1,28 @@
+# AUTHORED-BY Claude Fable 5
+# Foundational stub for the gufo:Event walkthrough (§3.3): "this something can
+# be somewhere; people can know: there is this something."
+@prefix cdef: <urn:concept-def:1#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix p:    <urn:x-mint:prime:> .
+
+<urn:x-mint:concrete-individual> a cdef:ConceptDefinition ;
+    cdef:semanticStatus cdef:Explicated ;
+    cdef:explication [
+        cdef:frame cdef:InstanceSchema ;
+        cdef:referents (
+          [ cdef:refIndex "1"^^xsd:nonNegativeInteger ; cdef:refKind cdef:SomethingRef ] ) ;
+        cdef:clauses (
+          [ cdef:op p:CAN ; cdef:scope
+            [ cdef:pred p:BE-SOMEWHERE ;
+              cdef:slot [ cdef:role cdef:undergoer ;
+                          cdef:filler [ cdef:ref "1"^^xsd:nonNegativeInteger ] ] ;
+              cdef:slot [ cdef:role cdef:locus ;
+                          cdef:filler [ cdef:head <urn:x-mint:prime:WHERE~PLACE> ] ] ] ]
+          [ cdef:op p:CAN ; cdef:scope
+            [ cdef:pred p:KNOW ;
+              cdef:slot [ cdef:role cdef:experiencer ; cdef:filler [ cdef:head p:PEOPLE ] ] ;
+              cdef:slot [ cdef:role cdef:complement ; cdef:filler
+                [ cdef:pred p:THERE-IS ;
+                  cdef:slot [ cdef:role cdef:undergoer ;
+                              cdef:filler [ cdef:ref "1"^^xsd:nonNegativeInteger ] ] ] ] ] ]
+        ) ] .

@@ -1,0 +1,8 @@
+# AUTHORED-BY Claude Fable 5
+@prefix cdef: <urn:concept-def:1#> .
+
+<urn:x-mint:title> a cdef:ConceptDefinition ;
+    cdef:semanticStatus cdef:AxiomsOnly ;
+    cdef:axiom [ cdef:rel cdef:propertyKind ; cdef:target cdef:DatatypeProperty ] ;
+    cdef:axiom [ cdef:rel cdef:domain ; cdef:target <urn:x-mint:bookmark> ] ;
+    cdef:axiom [ cdef:rel cdef:range  ; cdef:target <urn:x-mint:xsd-string> ] .

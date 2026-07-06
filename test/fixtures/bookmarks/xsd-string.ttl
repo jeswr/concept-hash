@@ -1,0 +1,6 @@
+# AUTHORED-BY Claude Fable 5
+@prefix cdef: <urn:concept-def:1#> .
+
+<urn:x-mint:xsd-string> a cdef:ConceptDefinition ;
+    cdef:semanticStatus cdef:AxiomsOnly ;
+    cdef:axiom [ cdef:rel cdef:bridgesTo ; cdef:target <http://www.w3.org/2001/XMLSchema#string> ] .

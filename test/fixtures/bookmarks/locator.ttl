@@ -1,0 +1,46 @@
+# AUTHORED-BY Claude Fable 5
+# bookmark:locator — the abstracted locator semantics (§3.4 closing paragraph):
+# "the locator is a kind of words; if someone sees these words, this someone can
+#  know where the bookmarked thing is."
+@prefix cdef: <urn:concept-def:1#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix p:    <urn:x-mint:prime:> .
+
+<urn:x-mint:locator> a cdef:ConceptDefinition ;
+    cdef:semanticStatus cdef:Explicated ;
+    cdef:axiom [ cdef:rel cdef:propertyKind ; cdef:target cdef:DatatypeProperty ] ;
+    cdef:axiom [ cdef:rel cdef:domain ; cdef:target <urn:x-mint:bookmark> ] ;
+    cdef:axiom [ cdef:rel cdef:range  ; cdef:target <urn:x-mint:xsd-string> ] ;
+    cdef:explication [
+        cdef:frame cdef:RelationalSchema ;        # referents 1, 2 := subject and object instances
+        cdef:referents (
+          [ cdef:refIndex "1"^^xsd:nonNegativeInteger ; cdef:refKind cdef:SomethingRef ]
+          [ cdef:refIndex "2"^^xsd:nonNegativeInteger ; cdef:refKind cdef:SomethingRef ]
+          [ cdef:refIndex "3"^^xsd:nonNegativeInteger ; cdef:refKind cdef:SomeoneRef ] ) ;
+        cdef:clauses (
+          # "the value is a kind of words"
+          [ cdef:pred p:BE-SPEC ;
+            cdef:slot [ cdef:role cdef:undergoer ;
+                        cdef:filler [ cdef:ref "2"^^xsd:nonNegativeInteger ] ] ;
+            cdef:slot [ cdef:role cdef:attribute ;
+                        cdef:filler [ cdef:quant p:ONE ; cdef:head p:KIND ;
+                                      cdef:of [ cdef:head p:WORDS ] ] ] ]
+          # "if someone sees these words, this someone can know where the thing is"
+          [ cdef:op p:IF ;
+            cdef:antecedent [ cdef:pred p:SEE ;
+              cdef:slot [ cdef:role cdef:experiencer ;
+                          cdef:filler [ cdef:head p:SOMEONE ;
+                                        cdef:bind "3"^^xsd:nonNegativeInteger ] ] ;
+              cdef:slot [ cdef:role cdef:stimulus ;
+                          cdef:filler [ cdef:ref "2"^^xsd:nonNegativeInteger ] ] ] ;
+            cdef:consequent [ cdef:op p:CAN ; cdef:scope
+              [ cdef:pred p:KNOW ;
+                cdef:slot [ cdef:role cdef:experiencer ;
+                            cdef:filler [ cdef:ref "3"^^xsd:nonNegativeInteger ] ] ;
+                cdef:slot [ cdef:role cdef:complement ; cdef:filler
+                  [ cdef:pred p:BE-SOMEWHERE ;
+                    cdef:slot [ cdef:role cdef:undergoer ;
+                                cdef:filler [ cdef:ref "1"^^xsd:nonNegativeInteger ] ] ;
+                    cdef:slot [ cdef:role cdef:locus ;
+                                cdef:filler [ cdef:head <urn:x-mint:prime:WHERE~PLACE> ] ] ] ] ] ] ]
+        ) ] .

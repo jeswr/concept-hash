@@ -1,0 +1,44 @@
+# AUTHORED-BY Claude Fable 5
+# gufo:Event — existence proof 1, transcribed VERBATIM from §3.3 of the design
+# doc (ellipsis-free, every clause of the gloss encoded): "this something
+# happens at some time; after this time, it is not happening; people can know:
+# it happened."
+@prefix cdef: <urn:concept-def:1#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix p:    <urn:x-mint:prime:> .
+
+<urn:x-mint:gufo-event> a cdef:ConceptDefinition ;
+    cdef:semanticStatus cdef:Explicated ;
+    cdef:axiom [ cdef:rel cdef:subClassOf   ; cdef:target <urn:x-mint:concrete-individual> ] ;
+    cdef:axiom [ cdef:rel cdef:disjointWith ; cdef:target <urn:x-mint:endurant> ] ;
+    cdef:explication [
+        cdef:frame cdef:InstanceSchema ;          # referent 1 := an instance of this concept (§4.6)
+        cdef:referents (
+          [ cdef:refIndex "1"^^xsd:nonNegativeInteger ; cdef:refKind cdef:SomethingRef ]
+          [ cdef:refIndex "2"^^xsd:nonNegativeInteger ; cdef:refKind cdef:TimeRef ] ) ;
+        cdef:clauses (
+          # clause 1 — "this something happens at some time"
+          [ cdef:pred p:HAPPEN ;
+            cdef:slot [ cdef:role cdef:undergoer ;
+                        cdef:filler [ cdef:ref "1"^^xsd:nonNegativeInteger ] ] ;
+            cdef:adjunct [ cdef:role cdef:time ;
+                           cdef:filler [ cdef:det p:SOME ;
+                                         cdef:head <urn:x-mint:prime:WHEN~TIME> ;
+                                         cdef:bind "2"^^xsd:nonNegativeInteger ] ] ]
+          # clause 2 — "after this time, this something is not happening"
+          [ cdef:op p:AFTER ;
+            cdef:anchor [ cdef:ref "2"^^xsd:nonNegativeInteger ] ;
+            cdef:scope  [ cdef:op p:NOT ; cdef:scope
+              [ cdef:pred p:HAPPEN ;
+                cdef:slot [ cdef:role cdef:undergoer ;
+                            cdef:filler [ cdef:ref "1"^^xsd:nonNegativeInteger ] ] ] ] ]
+          # clause 3 — "people can know: this something happened (before)"
+          [ cdef:op p:CAN ; cdef:scope
+            [ cdef:pred p:KNOW ;
+              cdef:slot [ cdef:role cdef:experiencer ; cdef:filler [ cdef:head p:PEOPLE ] ] ;
+              cdef:slot [ cdef:role cdef:complement ; cdef:filler
+                [ cdef:pred p:HAPPEN ;
+                  cdef:slot [ cdef:role cdef:undergoer ;
+                              cdef:filler [ cdef:ref "1"^^xsd:nonNegativeInteger ] ] ;
+                  cdef:adjunct [ cdef:role cdef:time ; cdef:filler p:BEFORE ] ] ] ] ]
+        ) ] .

@@ -1,0 +1,10 @@
+# AUTHORED-BY Claude Fable 5
+# Cyclic-pair SCC golden vector, member A — also SELF-REFERENCING, pinning the
+# §6 step-6 rewrite table (own IRI → #self even in axiom positions; the OTHER
+# member → #intra). Golden vector 9 of the design doc.
+@prefix cdef: <urn:concept-def:1#> .
+
+<urn:x-mint:cycle-alpha> a cdef:ConceptDefinition ;
+    cdef:semanticStatus cdef:AxiomsOnly ;
+    cdef:axiom [ cdef:rel cdef:subClassOf   ; cdef:target <urn:x-mint:cycle-alpha> ] ;
+    cdef:axiom [ cdef:rel cdef:disjointWith ; cdef:target <urn:x-mint:cycle-beta> ] .

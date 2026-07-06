@@ -1,0 +1,8 @@
+# AUTHORED-BY Claude Fable 5
+# Cyclic-pair SCC golden vector, member B (references A with a DIFFERENT
+# relation, so the pair is asymmetric and ordering keys are distinct).
+@prefix cdef: <urn:concept-def:1#> .
+
+<urn:x-mint:cycle-beta> a cdef:ConceptDefinition ;
+    cdef:semanticStatus cdef:AxiomsOnly ;
+    cdef:axiom [ cdef:rel cdef:subClassOf ; cdef:target <urn:x-mint:cycle-alpha> ] .

@@ -1,0 +1,12 @@
+# AUTHORED-BY Claude Fable 5
+# Restriction-bnode golden vector: a subclass of Bookmark whose instances carry
+# at least one title (restriction node shape per DEVIATIONS.md D1).
+@prefix cdef: <urn:concept-def:1#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+<urn:x-mint:titled-bookmark> a cdef:ConceptDefinition ;
+    cdef:semanticStatus cdef:AxiomsOnly ;
+    cdef:axiom [ cdef:rel cdef:subClassOf ; cdef:target <urn:x-mint:bookmark> ] ;
+    cdef:axiom [ cdef:rel cdef:restriction ; cdef:target
+      [ cdef:onProperty <urn:x-mint:title> ;
+        cdef:minCardinality "1"^^xsd:nonNegativeInteger ] ] .
