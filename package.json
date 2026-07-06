@@ -1,0 +1,51 @@
+{
+  "name": "@jeswr/concept-hash",
+  "version": "0.1.0",
+  "description": "Content-addressed concept hasher — profile-1 (urn:concept-def:1) definition-record extraction, RDFC-1.0 hashing with Unison-style SCC components, multihash/multibase URN emission, and verify-by-recompute. Prototype of the Content-Addressed Concepts design.",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "concept-hash": "./bin/concept-hash.js"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "lint": "biome check src test bin",
+    "lint:fix": "biome check --write src test bin",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "build": "tsc -p tsconfig.build.json",
+    "gate": "npm run lint && npm run typecheck && npm test && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeswr/concept-hash.git"
+  },
+  "dependencies": {
+    "multiformats": "^13.4.1",
+    "n3": "^1.26.0",
+    "rdf-canonize": "^4.0.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.11",
+    "@rdfjs/types": "^2.0.1",
+    "@types/n3": "^1.26.1",
+    "@types/node": "^24.10.9",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.17"
+  }
+}

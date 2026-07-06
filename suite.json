@@ -1,0 +1,38 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jeswr/full-solid-ecosystem/main/tracking/schema/suite.schema.json",
+  "id": "concept-hash",
+  "kind": "package",
+  "name": "Concept Hash",
+  "repo": "https://github.com/jeswr/concept-hash",
+  "category": "federation",
+  "maturity": "prototype",
+  "visibility": "public",
+  "stack": {
+    "lang": "TypeScript (ESM, NodeNext)",
+    "runtime": "Node >=20",
+    "rdf": "n3 ^1.26",
+    "canonicalization": "rdf-canonize ^4 (RDFC-1.0)",
+    "multiformats": "multiformats ^13",
+    "test": "vitest ^4.x",
+    "lint": "@biomejs/biome ^2.x",
+    "node": ">=20"
+  },
+  "dependsOn": [],
+  "federation": {
+    "sectors": [],
+    "produces": ["concept-definitions"],
+    "consumes": [],
+    "note": "PROTOTYPE of the Content-Addressed Concepts design (profile-1, urn:concept-def:1): definition-record extraction per the normative closed shape, reference-by-hash substitution, Unison-style SCC component hashing with stable member indexing over RDFC-1.0, multihash/multibase urn:concept: emission + https serving-path derivation, and a byte-pinned verify-by-recompute path. CLI: hash / verify / explain. Golden vectors committed (primes, gufo:Event, the bookmarks sector, cyclic pair, restriction, molecule, unicode gloss). Implementation deviations from the design doc are recorded precisely in DEVIATIONS.md — notably D8: the doc's literal duplicate-FDH rule rejects its own §3.4 record; implemented as bounded WL-refinement instead."
+  },
+  "status": {
+    "generatedAt": "2026-07-06T00:00:00.000Z",
+    "commit": "",
+    "version": "0.1.0",
+    "gate": {
+      "lint": "pass",
+      "typecheck": "pass",
+      "test": "pass",
+      "build": "pass"
+    }
+  }
+}
