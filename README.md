@@ -61,7 +61,9 @@ per-graph record shape, canonical member ordering re-check, recompute steps
 ## Install / gate
 
 ```bash
-npm install            # ignore-scripts=true — no lifecycle hooks run
+npm install            # the committed .npmrc sets ignore-scripts=true, so no
+                       # dependency lifecycle hooks run; outside this repo, use
+                       # `npm install --ignore-scripts` to get the same guarantee
 npm run gate           # lint (biome) + typecheck (tsc) + test (vitest) + build
 ```
 
